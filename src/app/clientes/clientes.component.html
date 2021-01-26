@@ -1,0 +1,182 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="src\assets\img\imagenalianza.jpg" alt="Alianza">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <img src="src\assets\img\imagenclientes.jpg" alt="cliente">
+        </div>
+
+        <div class="col-md-1">
+            <!--  <button class="btn btn-primary" type="button" [routerLink]="['/clientes/form']">New</button> > -->
+            <button class="btn btn-primary" type="button" (click)='ver(crearClienteModal)'>New</button>
+        </div>
+
+        <div class="col-md-1">
+            <button class="btn btn-primary" type="button">Export</button>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-3">
+            <a class="nav-link" href="#"> Clients </a>
+        </div>
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Enter shared key" #sk>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-dark" (click)='consultarunCliente(sk.value)'>Search</button>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary">Advance Search</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <a class="nav-link" href="#">Client Look History</a>
+        </div>
+        <div class="col-md-4">
+            <table class="table">
+                <tbody *ngFor="let uncliente of listaUnCliente">
+                    <tr>
+                        <th><label for="sharedKey" class="col-form-label col-sm-2">SharedKey</label></th>
+                        <th> <input type="text" class="form-control" name="sharedKey" value={{uncliente.sharedKey}}> </th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="name" class="col-form-label col-sm-2">Name</label></th>
+                        <th> <input type="text" class="form-control" name="name" value={{uncliente.name}}> </th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="phone" class="col-form-label col-sm-2">Phone</label></th>
+                        <th> <input type="text" class="form-control" name="phone" value={{uncliente.phone}}> </th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="email" class="col-form-label col-sm-2">Email</label></th>
+                        <th> <input type="text" class="form-control" name="email" value={{uncliente.email}}> </th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="startdate" class="col-form-label col-sm-2">Start Date</label></th>
+                        <th> <input type="date" class="form-control" name="startDate" value={{uncliente.startDate}}> </th>
+                    </tr>
+
+                    <tr>
+                        <th><label for="enddate" class="col-form-label col-sm-2">End Date</label></th>
+                        <th> <input type="date" class="form-control" name="endDate" value={{uncliente.endDate}}> </th>
+                    </tr>
+
+                    <tr>
+                        <th></th>
+                        <th> <button class="btn btn-primary" role="button">OK</button> </th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <a class="nav-link" href="#">Emergency PIN Configuration</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <a class="nav-link" href="#">Emergency PIN History</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+            <p>Clients</p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Shared Key</th>
+                        <th scope="col">Bussiness ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Data Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                        <th scope="row">{{cliente.sharedKey}}</th>
+                        <td>{{cliente.name}}</td>
+                        <td>{{cliente.phone}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.startDate | date:'dd-MM-yyyy'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<modal #crearClienteModal>
+    <modal-header>
+        <h5 class="modal-title">Create New Client</h5>
+    </modal-header>
+    <modal-content>
+        <div class="container">
+            <form>
+                <div class="form-group row">
+                    <label for="sharedKey" class="col-form-label col-sm-2">SharedKey</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="sharedKey" [(ngModel)]=cliente.sharedKey required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="name" class="col-form-label col-sm-2">Name</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="name" [(ngModel)]=cliente.name required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="phone" class="col-form-label col-sm-2">Phone</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="phone" [(ngModel)]=cliente.phone required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="email" class="col-form-label col-sm-2">Email</label>
+                    <div class="col-sm-6">
+                        <input type="email" class="form-control" name="email" [(ngModel)]=cliente.email required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="startDate" class="col-form-label col-sm-2">StartDate</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" name="startDate" [(ngModel)]=cliente.startDate required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="endDate" class="col-form-label col-sm-2">EndDate</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" name="endDate" [(ngModel)]=cliente.endDate required>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" role="button" (click)='create(crearClienteModal)'>Registrar</button>
+
+            </form>
+
+        </div>
+
+
+    </modal-content>
+</modal>
