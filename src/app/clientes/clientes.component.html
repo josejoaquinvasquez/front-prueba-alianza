@@ -1,17 +1,20 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <img src="src\assets\img\imagenalianza.jpg" alt="Alianza">
+            <img src="assets/img/alianza.jpg" alt="Alianza">
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
-            <img src="src\assets\img\imagenclientes.jpg" alt="cliente">
+            <img src="assets/img/clientes.jpg" alt="cliente">
         </div>
 
         <div class="col-md-1">
             <!--  <button class="btn btn-primary" type="button" [routerLink]="['/clientes/form']">New</button> > -->
-            <button class="btn btn-primary" type="button" (click)='ver(crearClienteModal)'>New</button>
+            <!--<button class="btn btn-primary" type="button" (click)='ver(crearClienteModal)'>New</button>-->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ModalCliente">
+                New
+              </button>
         </div>
 
         <div class="col-md-1">
@@ -122,6 +125,70 @@
 </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="ModalCliente" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel">Create New Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='cargarGrilla()'>
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group row">
+                        <label for="sharedKey" class="col-form-label col-sm-2">SharedKey</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="sharedKey" [(ngModel)]=cliente.sharedKey required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="name" class="col-form-label col-sm-2">Name</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="name" [(ngModel)]=cliente.name required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="phone" class="col-form-label col-sm-2">Phone</label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="phone" [(ngModel)]=cliente.phone required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="email" class="col-form-label col-sm-2">Email</label>
+                        <div class="col-sm-6">
+                            <input type="email" class="form-control" name="email" [(ngModel)]=cliente.email required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="startDate" class="col-form-label col-sm-2">StartDate</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" name="startDate" [(ngModel)]=cliente.startDate required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="endDate" class="col-form-label col-sm-2">EndDate</label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" name="endDate" [(ngModel)]=cliente.endDate required>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" aria-label="Close" (click)='create()'>Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--
 <modal #crearClienteModal>
     <modal-header>
         <h5 class="modal-title">Create New Client</h5>
@@ -180,3 +247,4 @@
 
     </modal-content>
 </modal>
+-->

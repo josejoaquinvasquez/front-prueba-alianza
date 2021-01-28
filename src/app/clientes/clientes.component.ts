@@ -15,14 +15,19 @@ export class ClientesComponent implements OnInit {
   prueba:string="Esto es una prueba de mi componente cliente";
   clientes:Cliente[];
   listaUnCliente:Cliente[];
+  
+
+  constructor(private clienteService:ClienteService,
+              private modalService: ModalManager,
+              private router:Router) {
 
 
-
-
-  constructor(private clienteService:ClienteService,private modalService: ModalManager,private router:Router) { }
+   }
 
   ngOnInit(): void {
     this.cargarGrilla();
+    this.cliente.startDate = Date.toString();
+    this.cliente.endDate = Date.toString();
   }
 
   cargarGrilla():void{
@@ -38,18 +43,21 @@ export class ClientesComponent implements OnInit {
     );
   }
 
-  create(modal):void{
+
+  create():void{
     this.clienteService.create(this.cliente).subscribe(
-      res=>this.router.navigate(['/clientes'])
+      res=>this.cargarGrilla()
     );
-    this.modalService.close(modal);
-    this.cargarGrilla();
-    this.ngOnInit();
+    this.cliente.phone="";
+    this.cliente.sharedKey="";
+    this.cliente.email="";
+    this.cliente.name="";
+    this.cliente.startDate = Date.toString();
+    this.cliente.endDate = Date.toString();
+    
   }
+
   ver(modal){  
     this.modalService.open(modal);
   }
-
-
-
 }
