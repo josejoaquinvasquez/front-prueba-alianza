@@ -15,11 +15,12 @@ export class ClientesComponent implements OnInit {
   prueba:string="Esto es una prueba de mi componente cliente";
   clientes:Cliente[];
   listaUnCliente:Cliente[];
-  
 
   constructor(private clienteService:ClienteService,
               private modalService: ModalManager,
               private router:Router) {
+  
+  
 
 
    }
@@ -28,6 +29,7 @@ export class ClientesComponent implements OnInit {
     this.cargarGrilla();
     this.cliente.startDate = Date.toString();
     this.cliente.endDate = Date.toString();
+
   }
 
   cargarGrilla():void{
@@ -57,7 +59,5 @@ export class ClientesComponent implements OnInit {
     
   }
 
-  ver(modal){  
-    this.modalService.open(modal);
-  }
+
 }
