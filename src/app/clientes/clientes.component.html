@@ -42,7 +42,7 @@
             <a class="nav-link" href="#">Client Look History</a>
         </div>
         <div class="col-md-4">
-            <table class="table">
+            <table class="table p-3 mb-2 bg-info text-white">
                 <tbody *ngFor="let uncliente of listaUnCliente">
                     <tr>
                         <th><label for="sharedKey" class="col-form-label col-sm-2">SharedKey</label></th>
@@ -107,6 +107,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Data Added</th>
+                        <th scope="col"><img src="../../assets/img/imagen-tabla.PNG" alt="Tabla"> </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -116,6 +117,7 @@
                         <td>{{cliente.phone}}</td>
                         <td>{{cliente.email}}</td>
                         <td>{{cliente.startDate | date:'dd-MM-yyyy'}}</td>
+                        <td><img src="../../assets/img/lapiz-tabla.PNG" alt="Editar"></td>
                     </tr>
                 </tbody>
             </table>
@@ -128,7 +130,7 @@
 <!-- Modal -->
 <div class="modal fade" id="ModalCliente" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content">
+        <div class="modal-content p-3 mb-2 bg-info text-white">
             <div class="modal-header">
                 <h5 class="modal-title" id="ModalLabel">Create New Client</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)='cargarGrilla()'>
@@ -212,8 +214,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" data-dismiss="modal" aria-label="Close" (click)='create()'>Registrar</button>
-
+                <button type="submit" class="btn btn-primary" data-dismiss="modal" aria-label="Close" (click)='create()'>Ok</button>
             </div>
         </div>
     </div>
